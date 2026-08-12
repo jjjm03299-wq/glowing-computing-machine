@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "GB",
+    "name": "United Kingdom",
+    "flag": "🇬🇧",
+    "city": "London",
+    "ipPrefix": "195.14.55",
+    "latencyMs": 34,
+    "servers": 864,
+    "status": "AVAILABLE"
+  }
+}

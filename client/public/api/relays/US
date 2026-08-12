@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "US",
+    "name": "United States",
+    "flag": "🇺🇸",
+    "city": "New York",
+    "ipPrefix": "104.21.8",
+    "latencyMs": 18,
+    "servers": 1420,
+    "status": "AVAILABLE"
+  }
+}

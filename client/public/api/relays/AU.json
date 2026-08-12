@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "AU",
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "city": "Sydney",
+    "ipPrefix": "13.238.44",
+    "latencyMs": 88,
+    "servers": 276,
+    "status": "AVAILABLE"
+  }
+}

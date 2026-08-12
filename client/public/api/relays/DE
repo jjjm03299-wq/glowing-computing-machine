@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "DE",
+    "name": "Germany",
+    "flag": "🇩🇪",
+    "city": "Frankfurt",
+    "ipPrefix": "185.220.101",
+    "latencyMs": 41,
+    "servers": 723,
+    "status": "AVAILABLE"
+  }
+}

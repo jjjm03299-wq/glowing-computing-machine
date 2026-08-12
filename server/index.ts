@@ -16,7 +16,8 @@ async function startServer() {
       ? path.resolve(__dirname, "public")
       : path.resolve(__dirname, "..", "dist", "public");
 
-  app.use(express.static(staticPath));
+  // GitHub Pages base path mirrors the repo name (see vite.config.ts base)
+  app.use("/glowing-computing-machine", express.static(staticPath));
 
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {

@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "FR",
+    "name": "France",
+    "flag": "🇫🇷",
+    "city": "Paris",
+    "ipPrefix": "51.15.77",
+    "latencyMs": 47,
+    "servers": 601,
+    "status": "AVAILABLE"
+  }
+}

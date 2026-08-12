@@ -1,0 +1,13 @@
+{
+  "connected": true,
+  "lease": {
+    "ip": "185.220.101.98",
+    "exitIp": "185.220.101.98",
+    "country": "DE",
+    "city": "Frankfurt",
+    "leasedAt": "2026-08-12T11:02:13.282Z"
+  },
+  "latencyMs": 41,
+  "uptimeSeconds": 0,
+  "note": "Static demo fixture — connect live from the app UI or fetch() in the browser for the stateful flow."
+}
