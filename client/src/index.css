@@ -1,3 +1,9 @@
+/*
+ * DESIGN: Terminal Relay — deep ink-charcoal console base, phosphor signal
+ * green ONLY for live/active states, amber for handshake/warning, cool
+ * grey-blue for idle. JetBrains Mono for all telemetry, Space Grotesk for
+ * display. Scanline grain + radar sweep are signature motifs.
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,8 +49,9 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
+  --radius: 0.5rem;
+  --primary: oklch(0.82 0.17 155);
+  --primary-foreground: oklch(0.15 0.02 155);
   --sidebar-primary: var(--color-blue-600);
   --sidebar-primary-foreground: var(--color-blue-50);
   --chart-1: var(--color-blue-300);
@@ -52,24 +59,26 @@
   --chart-3: var(--color-blue-600);
   --chart-4: var(--color-blue-700);
   --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --radius: 0.5rem;
+  --background: oklch(0.16 0.008 260);
+  --signal: oklch(0.82 0.17 155);
+  --amber: oklch(0.8 0.15 75);
+  --foreground: oklch(0.9 0.01 180);
+  --card: oklch(0.2 0.01 260);
+  --card-foreground: oklch(0.9 0.01 180);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.235 0.015 65);
   --secondary: oklch(0.98 0.001 286.375);
   --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
+  --muted: oklch(0.24 0.01 260);
+  --muted-foreground: oklch(0.6 0.02 200);
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
+  --border: oklch(0.32 0.02 220);
+  --input: oklch(0.32 0.02 220);
+  --ring: oklch(0.82 0.17 155 / 60%);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.235 0.015 65);
   --sidebar-accent: oklch(0.967 0.001 286.375);
@@ -79,26 +88,24 @@
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
+  --primary: oklch(0.82 0.17 155);
+  --primary-foreground: oklch(0.15 0.02 155);
+  --background: oklch(0.16 0.008 260);
+  --foreground: oklch(0.9 0.01 180);
+  --card: oklch(0.2 0.01 260);
   --card-foreground: oklch(0.85 0.005 65);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.85 0.005 65);
   --secondary: oklch(0.24 0.006 286.033);
   --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted: oklch(0.24 0.01 260);
+  --muted-foreground: oklch(0.6 0.02 200);
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground:  oklch(0.92 0.005 65);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(0.32 0.02 220);
+  --input: oklch(0.32 0.02 220);
   --ring: oklch(0.488 0.243 264.376);
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
@@ -113,9 +120,16 @@
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
 
+body {
+  background-color: var(--background);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  html {
+    font-family: "Space Grotesk", sans-serif;
   }
   body {
     @apply bg-background text-foreground;
@@ -160,18 +174,136 @@
     min-width: 0;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
+  /* -- Terminal Relay signature utilities -- */
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .telemetry-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .scanlines::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      oklch(0 0 0 / 7%) 3px,
+      oklch(0 0 0 / 7%) 4px
+    );
+    opacity: 0.5;
+  }
+
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 59;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .signal-text {
+    color: var(--signal);
+  }
+
+  .amber-text {
+    color: var(--amber);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px oklch(0.82 0.17 155 / 45%),
+      0 0 24px -4px oklch(0.82 0.17 155 / 35%);
+  }
+
+  .glow-ring-amber {
+    box-shadow: 0 0 0 1px oklch(0.8 0.15 75 / 45%),
+      0 0 24px -4px oklch(0.8 0.15 75 / 35%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .radar-sweep {
+      animation: radar-spin 4s linear infinite;
+      transform-origin: center;
+    }
+    .live-pulse {
+      animation: live-blink 1.6s ease-in-out infinite;
+    }
+    .relay-enter {
+      animation: relay-in 0.25s cubic-bezier(0.23, 1, 0.32, 1) both;
     }
   }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+  @keyframes radar-spin {
+    from {
+      transform: rotate(0deg);
     }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes live-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes radar-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes live-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes relay-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem; /* 24px - tablet padding */
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem; /* 32px - desktop padding */
+    padding-right: 2rem;
+    max-width: 1280px; /* Standard content width */
   }
 }

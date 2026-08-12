@@ -1,0 +1,34 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/FtrhhLctb6KrdM9orgyQkQ.git",
+    "expiration": "2026-08-13T03:35:15.749Z",
+    "token": "art_v1_22da6429cb03ac3004c967ed0a63525571271f38?expires=1786592115",
+    "backend": "GIT_BACKEND_ARTIFACTS"
+  },
+  "name": "vpn-dashboard",
+  "path": "/home/ubuntu/vpn-dashboard",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "5D877xhZfqbyRimm3gLkDj",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "GaC9JvD33cJugd7ZJsfG4z",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Bxhxb B",
+    "OWNER_OPEN_ID": "JbLjon7TZEucc5ZrBNk4TV",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "790e8f4d-4b29-4425-927b-08bc3c25b9f7",
+    "VITE_APP_ID": "FtrhhLctb6KrdM9orgyQkQ",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "VPN Country Flag Dashboard",
+    "VITE_FRONTEND_FORGE_API_KEY": "7pH6fZSsKjmt3j6EyswQ2A",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
