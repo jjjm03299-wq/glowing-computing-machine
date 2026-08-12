@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "BR",
+    "name": "Brazil",
+    "flag": "🇧🇷",
+    "city": "São Paulo",
+    "ipPrefix": "177.54.12",
+    "latencyMs": 96,
+    "servers": 198,
+    "status": "AVAILABLE"
+  }
+}

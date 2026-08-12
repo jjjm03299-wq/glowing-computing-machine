@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "JP",
+    "name": "Japan",
+    "flag": "🇯🇵",
+    "city": "Tokyo",
+    "ipPrefix": "45.32.119",
+    "latencyMs": 52,
+    "servers": 512,
+    "status": "AVAILABLE"
+  }
+}

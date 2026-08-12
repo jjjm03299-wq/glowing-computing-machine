@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "SG",
+    "name": "Singapore",
+    "flag": "🇸🇬",
+    "city": "Singapore",
+    "ipPrefix": "165.22.156",
+    "latencyMs": 71,
+    "servers": 344,
+    "status": "AVAILABLE"
+  }
+}

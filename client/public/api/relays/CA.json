@@ -1,0 +1,12 @@
+{
+  "relay": {
+    "code": "CA",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "city": "Toronto",
+    "ipPrefix": "142.93.201",
+    "latencyMs": 29,
+    "servers": 388,
+    "status": "AVAILABLE"
+  }
+}
