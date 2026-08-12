@@ -206,6 +206,8 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
+  // Deployed to GitHub Pages under /<repo-name>/ — use the repo path as base
+  base: "/glowing-computing-machine/",
   plugins,
   resolve: {
     alias: {
